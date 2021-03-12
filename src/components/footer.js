@@ -1,11 +1,13 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import {
   IconGitHub,
   IconLinkedin,
   IconCodepen,
   IconInstagram,
   IconTwitter,
+  IconStar,
+  IconFork,
 } from '@components/icons';
 import { socialMedia } from '@config';
 import styled from 'styled-components';
@@ -49,8 +51,21 @@ const StyledMetadata = styled.div`
 const StyledGitHubLink = styled.a`
   color: ${colors.slate};
 `;
-
-const Footer = () => (
+const StyledGitHubInfo = styled.div`
+  margin-top: 10px;
+  & > span {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 7px;
+  }
+  svg {
+    display: inline-block;
+    height: 15px;
+    width: auto;
+    margin-right: 5px;
+  }
+`;
+const Footer = ({ githubInfo }) => (
   <StyledContainer>
     <StyledSocial>
       <StyledSocialList>
@@ -81,11 +96,29 @@ const Footer = () => (
       </StyledSocialList>
     </StyledSocial>
     <StyledMetadata>
-      <StyledGitHubLink>
-        <div>Hosted on Netlify</div>
+      <StyledGitHubLink
+        href="https://github.com/bchiang7/v4"
+        target="_blank"
+        rel="nofollow noopener noreferrer">
+        <div>Designed &amp; Built by Brittany Chiang</div>
+
+        {githubInfo.stars && githubInfo.forks && (
+          <StyledGitHubInfo>
+            <span>
+              <IconStar />
+              <span>{githubInfo.stars}</span>
+            </span>
+            <span>
+              <IconFork />
+              <span>{githubInfo.forks}</span>
+            </span>
+          </StyledGitHubInfo>
+        )}
       </StyledGitHubLink>
     </StyledMetadata>
   </StyledContainer>
 );
-
+Footer.propTypes = {
+  githubInfo: PropTypes.object,
+};
 export default Footer;
