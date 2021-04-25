@@ -11,6 +11,7 @@ module.exports = {
   email: 'mgorabbani@gmail.com',
   github: 'https://github.com/mgorabbani',
   twitterHandle: '@mgorabbani',
+  googleAnalyticsID: 'G-679Q6CJGJR',
   socialMedia: [
     {
       name: 'GitHub',
